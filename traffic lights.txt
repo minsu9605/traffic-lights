@@ -1,13 +1,13 @@
 #include <wiringPi.h>
 #include <stdio.h>
 #define SWITCH 1
-#define LED0 2
-#define LED1 3
-#define LED2 21
-#define LED3 22
-#define LED4 24
-#define LED5 5
-#define LED6 6
+#define GREEN Pedestrian Light 2
+#define RED Pedestrian Light 3
+#define RED Vehicle Light 21
+#define Yellow Vehicle Light 22
+#define Green Vehicle Light 24
+#define Pedestrian Safe LIght 5
+#define Pedestrian Safe LIght2 6
 
 int main (void) {
 if (wiringPiSetup() == -1) {
@@ -17,53 +17,53 @@ return 1;
 
 pinMode(SWITCH, INPUT);
 pinMode(SWITCH, PUD_DOWN);
-pinMode(LED0, OUTPUT); 
-pinMode(LED1, OUTPUT);
-pinMode(LED2, OUTPUT);
-pinMode(LED3, OUTPUT);
-pinMode(LED4, OUTPUT);
-pinMode(LED5, OUTPUT);
-pinMode(LED6, OUTPUT);
+pinMode(GREEN Pedestrian Light, OUTPUT); 
+pinMode(RED Pedestrian Light, OUTPUT);
+pinMode(RED Vehicle Light, OUTPUT);
+pinMode(Yellow Vehicle Light, OUTPUT);
+pinMode(Green Vehicle Light, OUTPUT);
+pinMode(Pedestrian Safe LIght, OUTPUT);
+pinMode(Pedestrian Safe LIght2, OUTPUT);
 
 for(;;) {
-	digitalWrite(LED0, LOW);
-	digitalWrite(LED1, HIGH);
-	digitalWrite(LED2, LOW);
-	digitalWrite(LED3, LOW);
-	digitalWrite(LED4, HIGH);
-	digitalWrite(LED5, LOW);
-	digitalWrite(LED6, LOW);
+	digitalWrite(GREEN Pedestrian Light, LOW);
+	digitalWrite(RED Pedestrian Light, HIGH);
+	digitalWrite(RED Vehicle Light, LOW);
+	digitalWrite(Yellow Vehicle Light, LOW);
+	digitalWrite(Green Vehicle Light, HIGH);
+	digitalWrite(Pedestrian Safe LIght, LOW);
+	digitalWrite(Pedestrian Safe LIght2, LOW);
 
 	if (digitalRead(SWITCH) ==1) {
 
 		delay(3000);
 
-		digitalWrite(LED4, LOW); 
-		digitalWrite(LED3, HIGH);
+		digitalWrite(Green Vehicle Light, LOW); 
+		digitalWrite(Yellow Vehicle Light, HIGH);
 
 		delay(2000);
 
-		digitalWrite(LED3, LOW);
-		digitalWrite(LED2, HIGH);
-		digitalWrite(LED1, LOW);
+		digitalWrite(Yellow Vehicle Light, LOW);
+		digitalWrite(RED Vehicle Light, HIGH);
+		digitalWrite(RED Pedestrian Light, LOW);
 
 		delay(500);
 
-		digitalWrite(LED0, HIGH);
+		digitalWrite(GREEN Pedestrian Light, HIGH);
 
 		int a;
 		for (a=0;a<5;a++) {
 
-			digitalWrite(LED5, HIGH);
+			digitalWrite(Pedestrian Safe LIght, HIGH);
 			delay(500);
 
-			digitalWrite(LED6, HIGH);
+			digitalWrite(Pedestrian Safe LIght2, HIGH);
 			delay(500);
 
-			digitalWrite(LED5, LOW);
+			digitalWrite(Pedestrian Safe LIght, LOW);
 			delay(500);
 	
-			digitalWrite(LED6, LOW);
+			digitalWrite(Pedestrian Safe LIght2, LOW);
 			delay(500);
 				}
 	
